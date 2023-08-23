@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class MovieService {
 
-    private final MovieRepository movieRepository; // Esto se llama inyección de dependencias
+    private final MovieRepository movieRepository;
 
     public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
@@ -41,8 +41,8 @@ public class MovieService {
         movieRepository.deleteById(id);
     }
 
-    public List<MovieCustomerDTO> findAllCustomersById(Integer id){
-        return movieRepository.findMovieAndRenterCustomer(id);
+    public List<MovieCustomerDTO> findAllCustomersByMovieId(Integer id){
+        return movieRepository.findCustomerByMovieId(id);
     }
 
 }

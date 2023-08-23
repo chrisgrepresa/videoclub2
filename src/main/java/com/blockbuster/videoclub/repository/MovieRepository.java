@@ -16,6 +16,6 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
             JOIN Customer c ON mr.customer.customerId = c.customerId
             WHERE m.movieId = :movieId
             """)
-    List<MovieCustomerDTO> findMovieAndRenterCustomer(Integer movieId);
+    List<MovieCustomerDTO> findCustomerByMovieId(Integer movieId);
 
 }

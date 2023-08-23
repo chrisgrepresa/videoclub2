@@ -16,8 +16,6 @@ import java.util.Optional;
 @RestController
 public class Controller {
 
-    //Inyección de dependencia del servicio
-
     private final MovieService movieService;
     private final CustomerService customerService;
     private final MovieRentalService movieRentalService;
@@ -60,14 +58,15 @@ public class Controller {
         return customerService.findAllCustomers();
     }
 
-    @GetMapping("/searchAllRentals")  // Esto no funcionará por motivos complejos, se soluciona haciendo una query personalizada que devuelva un DTO, lo cual es bastante normal, no intentes hacerla funcionar, no te preocupes
+    @GetMapping("/searchAllRentals")
     public List<MovieRental> searchAllRentals(){
         return movieRentalService.findAllMovieRental();
     }
 
-    @GetMapping("/findAllCustomersFromId/{id}")  // Ya funciona
-    public List<MovieCustomerDTO> findAllCustomersFromId(@PathVariable String id){
-        return movieService.findAllCustomersById(Integer.parseInt(id));
+    @GetMapping("/findAllCustomersFromMovieId/{id}")
+    public List<MovieCustomerDTO> findAllCustomersFromMovieId(@PathVariable String id){
+        return movieService.findAllCustomersByMovieId(Integer.parseInt(id));
     }
+
 
 }
